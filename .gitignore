@@ -1,2 +1,3 @@
 Plug/
 cache/
+autoload/plug.vim*
