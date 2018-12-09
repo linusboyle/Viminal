@@ -1,4 +1,4 @@
-" findRoot.vim
+" setfilehead.vim
 " Copyright (c) 2018 Linus Boyle <linusboyle@gmail.com>
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,30 +19,35 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-if &compatible || exists('g:loaded_findRoot')
+if exists('g:loaded_setfindhead') || &compatible
   finish
 endif
 
-let g:loaded_findRoot= 1
+if !has('autocmd') || v:version < 700
+  finish
+endif
 
-let s:markers = ['.root','.git','.svn']
+let g:loaded_setfindhead= 1
 
-function! Find_project_root()
-    let l:path = simplify(expand("%:p:h"))
-    let l:previous_path = ""
+function! AutoSetFileHead()
+    "如果文件类型为.sh文件
+    if &filetype ==# 'sh'
+        call setline(1, "\#!/bin/bash")
+    endif
 
-    while l:path != l:previous_path
-        for root in s:markers
-            if !empty(globpath(l:path, root, 1))
-                let l:proj_dir = simplify(fnamemodify(l:path, ':p'))
-                if l:proj_dir == '/'
-                    return ""
-                endif
-                return l:proj_dir
-            endif
-        endfor
-        let l:previous_path = l:path
-        let l:path = fnamemodify(l:path, ':h')
-    endwhile
-    return ""
-endfunction
+    "如果文件类型为python
+    if &filetype ==# 'python'
+         call setline(1, "\#!/usr/bin/env python")
+         call append(1, "\# encoding: utf-8")
+         "call setline(1, "\# -*- coding: utf-8 -*-")
+    endif
+
+    normal G
+    normal o
+    normal o
+endfunc
+
+augroup filetype_grp
+    autocmd!
+    autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
+augroup END

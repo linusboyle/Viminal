@@ -1,4 +1,4 @@
-" grepOperator.vim
+" plugin/simple_highlight.vim
 " Copyright (c) 2018 Linus Boyle <linusboyle@gmail.com>
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,37 +19,27 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-if &compatible || exists('g:loaded_grepOperator')
+" just a simple highlight util
+
+if &compatible || exists('g:loaded_simplehighlight')
   finish
 endif
 
-let g:loaded_grepOperator= 1
+let g:loaded_simplehighlight = 1
 
-let s:grep_command = "Grepper -tool ag -query "
+let s:todo_pattern = ''
+let s:debug_pattern = ''
 
-function! s:GrepOperator(type) abort
-    let l:saved_unnamed_register = @@
-    let l:project_root = findRoot#Find_project_root()
+if exists('g:todo_pattern')
+    let s:todo_pattern = g:todo_pattern
+endif
 
-    if a:type ==# 'v'
-        normal! `<v`>y
-    elseif a:type ==# 'char'
-        normal! `[v`]y
-    else
-        "ignore multiline mode, just because it's not useful
-        return
-    endif
+if exists('g:debug_pattern')
+    let s:debug_pattern = g:debug_pattern
+endif
 
-    if empty(l:project_root)
-        "search in current dir
-        silent! execute s:grep_command . shellescape(@@) . " ."
-    else
-        "search in root dir
-        silent! execute s:grep_command . shellescape(@@) . " " . l:project_root
-    endif
-
-    let @@ = saved_unnamed_register
-endfunction
-
-nnoremap <plug>GrepOperatorNormal :<c-u>set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <plug>GrepOperatorVisual :<c-u>call <SID>GrepOperator(visualmode())<cr>
+augroup highlight_grp
+    autocmd!
+    autocmd Syntax * call matchadd('Todo',  s:todo_pattern)
+    autocmd Syntax * call matchadd('Debug', s:debug_pattern)
+augroup END

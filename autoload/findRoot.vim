@@ -1,4 +1,4 @@
-" grepOperator.vim
+" findRoot.vim
 " Copyright (c) 2018 Linus Boyle <linusboyle@gmail.com>
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,37 +19,24 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-if &compatible || exists('g:loaded_grepOperator')
-  finish
-endif
+let s:markers = ['.root','.git','.svn']
 
-let g:loaded_grepOperator= 1
+function! findRoot#Find_project_root()
+    let l:path = simplify(expand("%:p:h"))
+    let l:previous_path = ""
 
-let s:grep_command = "Grepper -tool ag -query "
-
-function! s:GrepOperator(type) abort
-    let l:saved_unnamed_register = @@
-    let l:project_root = findRoot#Find_project_root()
-
-    if a:type ==# 'v'
-        normal! `<v`>y
-    elseif a:type ==# 'char'
-        normal! `[v`]y
-    else
-        "ignore multiline mode, just because it's not useful
-        return
-    endif
-
-    if empty(l:project_root)
-        "search in current dir
-        silent! execute s:grep_command . shellescape(@@) . " ."
-    else
-        "search in root dir
-        silent! execute s:grep_command . shellescape(@@) . " " . l:project_root
-    endif
-
-    let @@ = saved_unnamed_register
+    while l:path != l:previous_path
+        for root in s:markers
+            if !empty(globpath(l:path, root, 1))
+                let l:proj_dir = simplify(fnamemodify(l:path, ':p'))
+                if l:proj_dir == '/'
+                    return ""
+                endif
+                return l:proj_dir
+            endif
+        endfor
+        let l:previous_path = l:path
+        let l:path = fnamemodify(l:path, ':h')
+    endwhile
+    return ""
 endfunction
-
-nnoremap <plug>GrepOperatorNormal :<c-u>set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <plug>GrepOperatorVisual :<c-u>call <SID>GrepOperator(visualmode())<cr>

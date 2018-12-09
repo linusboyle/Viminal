@@ -1,4 +1,4 @@
-" grepOperator.vim
+" smartcase.vim
 " Copyright (c) 2018 Linus Boyle <linusboyle@gmail.com>
 "
 " Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,37 +19,32 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-if &compatible || exists('g:loaded_grepOperator')
+" enable smartcase when on commandline
+if &compatible || exists('g:loaded_smartcase')
   finish
 endif
 
-let g:loaded_grepOperator= 1
+let g:loaded_smartcase = 1
 
-let s:grep_command = "Grepper -tool ag -query "
+let s:smartcase_bak = &l:smartcase
+let s:ignorecase_bak = &l:ignorecase
 
-function! s:GrepOperator(type) abort
-    let l:saved_unnamed_register = @@
-    let l:project_root = findRoot#Find_project_root()
-
-    if a:type ==# 'v'
-        normal! `<v`>y
-    elseif a:type ==# 'char'
-        normal! `[v`]y
-    else
-        "ignore multiline mode, just because it's not useful
-        return
-    endif
-
-    if empty(l:project_root)
-        "search in current dir
-        silent! execute s:grep_command . shellescape(@@) . " ."
-    else
-        "search in root dir
-        silent! execute s:grep_command . shellescape(@@) . " " . l:project_root
-    endif
-
-    let @@ = saved_unnamed_register
+function! s:Suspend() abort
+  let s:smartcase_bak = &l:smartcase
+  let s:ignorecase_bak = &l:ignorecase
+  let &l:smartcase = 1
+  let &l:ignorecase = 1
 endfunction
 
-nnoremap <plug>GrepOperatorNormal :<c-u>set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <plug>GrepOperatorVisual :<c-u>call <SID>GrepOperator(visualmode())<cr>
+function! s:Restore() abort
+  let &l:smartcase = s:smartcase_bak
+  let &l:ignorecase = s:ignorecase_bak
+  let s:smartcase_bak = &l:smartcase
+  let s:ignorecase_bak = &l:ignorecase
+endfunction
+
+augroup dynamic_smartcase
+    autocmd!
+    autocmd CmdLineEnter : call s:Suspend()
+    autocmd CmdLineLeave : call s:Restore()
+augroup END

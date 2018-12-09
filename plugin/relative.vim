@@ -53,7 +53,7 @@ function! s:Load() abort
 endfunction
 
 " Set up hooks for toggling 'relative'
-augroup cursor_current
+augroup relative_current
   autocmd!
 
   " Turn off 'relative' for other windows on load
