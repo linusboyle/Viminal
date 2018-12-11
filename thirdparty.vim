@@ -44,8 +44,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Raimondi/delimitMate'
 
 "auto tag generation and management
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'skywind3000/gutentags_plus'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'skywind3000/gutentags_plus'
 
 "project management
 Plug 'scrooloose/nerdtree'
@@ -86,11 +86,11 @@ let g:monokai_term_italic = 1
 let g:monokai_gui_italic = 1
 "}}}
 
-" ycm load autocommand -----{{{
+"ycm load autocommand -----{{{
 augroup load_ycm
     autocmd!
-    autocmd InsertEnter * call plug#load('YouCompleteMe')
-    autocmd InsertEnter * call plug#load('YCM-Generator')
+    autocmd InsertEnter *.cpp,*.c,*.h call plug#load('YouCompleteMe')
+    autocmd InsertEnter *.cpp,*.c,*.h call plug#load('YCM-Generator')
 augroup END
 "}}}
 
