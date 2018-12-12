@@ -30,6 +30,10 @@ endif
 
 let g:loaded_gtags = 1
 
+if get(g:, 'gtags-using-cscope', 1)
+    set cscopeprg=gtags-cscope
+endif
+
 let s:project_root = ''
 
 function! s:switchdb(path) abort
@@ -90,13 +94,28 @@ function! s:find(what, ...) abort
     endif
 
 	let text = "[cscope ".a:what.": ".text."]"
-	call setqflist([], 'r', {'title':text})
+	call setqflist([], ' ', {'nr':'$','title':text})
 
     let tmp=&cscopequickfix
-    set cscopequickfix=s-,c-,d-,i-,t-,e-,a-,g-,f-
-	exec 'cs find '.a:what.' '.fnameescape(keyword)
+    set cscopequickfix=s+,c+,d+,i+,t+,e+,a+,g+,f+
+
+    try
+	    exec 'cs find '.a:what.' '.fnameescape(keyword)
+	catch /^Vim\%((\a\+)\)\=:E259/
+        echom "sorry, not found :<"
+    endtry
+
     let &cscopequickfix=tmp
 	redrawstatus
 endfunction
 
 command! -nargs=+ Gfind call s:find(<f-args>)
+noremap <silent> <plug>gtagsfind_s :<c-u>Gfind s <C-R><C-W><cr>
+noremap <silent> <plug>gtagsfind_g :<c-u>Gfind g <C-R><C-W><cr>
+noremap <silent> <plug>gtagsfind_c :<c-u>Gfind c <C-R><C-W><cr>
+noremap <silent> <plug>gtagsfind_t :<c-u>Gfind t <C-R><C-W><cr>
+noremap <silent> <plug>gtagsfind_e :<c-u>Gfind e <C-R><C-W><cr>
+noremap <silent> <plug>gtagsfind_f :<c-u>Gfind f <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <plug>gtagsfind_i :<c-u>Gfind i <C-R>=expand("<cfile>")<cr><cr>
+noremap <silent> <plug>gtagsfind_d :<c-u>Gfind d <C-R><C-W><cr>
+noremap <silent> <plug>gtagsfind_a :<c-u>Gfind a <C-R><C-W><cr>
