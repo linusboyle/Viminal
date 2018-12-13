@@ -50,21 +50,26 @@ function! s:find(what, ...) abort
     let l:root = findRoot#Find_project_root()
 
     if empty(l:root)
-        echom "You are not editing a project :)"
+        echo "You are not editing a project :)"
         return
     endif
 
     if l:root !=# s:project_root
-        if isdirectory(fnameescape(l:root) . '/.git')
-            call s:switchdb(fnameescape(l:root))
+        if isdirectory(fnameescape(l:root) . '/.git') 
+            if filereadable(fnameescape(l:root) . '/.git/GTAGS')
+                call s:switchdb(fnameescape(l:root))
+            else 
+                echo "GTAGS not available yet!"
+                return
+            endif
         else
-            echom "not seems to be git repo :<"
+            echo "not seems to be git repo :<"
             return
         endif
     endif
 
     if empty(s:project_root) 
-        echom "Cscope connection cannot be established :<"
+        echo "Cscope connection cannot be established :<"
         return
     endif
 
@@ -89,7 +94,7 @@ function! s:find(what, ...) abort
     elseif a:what == '9' || a:what == 'a'
         let text = 'assigned "'.keyword.'"'
     else
-        echom "argument error!"
+        echo "argument error!"
         return
     endif
 
@@ -101,8 +106,9 @@ function! s:find(what, ...) abort
 
     try
 	    exec 'cs find '.a:what.' '.fnameescape(keyword)
+        "exec 'resize' min([ 6, max([ 1, len(getqflist()) ]) ])
 	catch /^Vim\%((\a\+)\)\=:E259/
-        echom "sorry, not found :<"
+        echo "sorry, not found :<"
     endtry
 
     let &cscopequickfix=tmp
