@@ -22,13 +22,21 @@ let g:loaded_relative_current = 1
 
 " Suspend 'relative' when a window is inactive or inserting
 function! s:Suspend() abort
+  if !&l:number
+      return
+  endif
+
   let w:relative_current = &l:relativenumber
   let &l:relativenumber = 0
 endfunction
 
 " Restore 'relative' when a window is active and non-insert
 function! s:Restore() abort
-  let &l:relativenumber = get(w:, 'relative_current', &l:number ? &g:relativenumber : 0)
+  if !&l:number
+      return
+  endif
+
+  let &l:relativenumber = get(w:, 'relative_current', &g:relativenumber)
   let w:relative_current = &l:relativenumber
 endfunction
 
