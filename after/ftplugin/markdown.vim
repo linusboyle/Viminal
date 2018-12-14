@@ -1,3 +1,3 @@
-onoremap <buffer> ih :<c-u>execute "normal! ?^#\\+\r:nohlsearch\r0vg_"<cr>
+setlocal conceallevel=2
 
-let b:undo_ftplugin .= '|ounmap <buffer> ih'
+let b:undo_ftplugin .= '|setlocal conceallevel<'
