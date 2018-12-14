@@ -66,7 +66,6 @@ Plug 'sillybun/vim-repl', {'do': './install.sh'}
 Plug 'mhinz/vim-startify'
 
 Plug 'ryanoasis/vim-devicons'
-Plug 'romgrk/winteract.vim'
 
 call plug#end()
 
