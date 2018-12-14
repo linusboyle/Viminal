@@ -10,17 +10,6 @@
 
 call plug#begin('~/.vim/Plug')
 
-"colorscheme ----------------{{{
-
-Plug 'jacoborus/tender.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'crusoexia/vim-monokai'
-Plug 'morhetz/gruvbox'
-Plug 'liuchengxu/space-vim-dark'
-Plug 'dracula/vim', { 'as': 'dracula' }
-
-"}}}
-
 "util -----------------------{{{
 Plug 'danro/rename.vim'
 Plug 'godlygeek/tabular'
