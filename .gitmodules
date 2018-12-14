@@ -1,0 +1,3 @@
+[submodule "pack"]
+	path = pack
+	url = git@github.com:linusboyle/packages.git
