@@ -11,12 +11,9 @@
 call plug#begin('~/.vim/Plug')
 
 "util -----------------------{{{
-Plug 'danro/rename.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-"Plug 'skywind3000/vim-preview'
-Plug 'alpertuna/vim-header'
 
 "visible mark
 Plug 'kshenoy/vim-signature'
@@ -32,10 +29,6 @@ Plug 'tpope/vim-unimpaired'
 "insert mode enhancement
 Plug 'Raimondi/delimitMate'
 
-"auto tag generation and management
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'skywind3000/gutentags_plus'
-
 "project management
 Plug 'scrooloose/nerdtree'
 Plug 'Yggdroot/LeaderF'
@@ -43,7 +36,6 @@ Plug 'tpope/vim-fugitive'
 
 "moving enhancement
 Plug 'Lokaltog/vim-easymotion'
-Plug 'unblevable/quick-scope'
 
 "complete
 Plug 'Valloric/YouCompleteMe',{ 'on': []}
@@ -51,16 +43,6 @@ Plug 'rdnetto/YCM-Generator',{ 'on' : [],'branch':'stable'}
 Plug 'Shougo/echodoc.vim'
 
 Plug 'mbbill/undotree',{'on':'UndotreeToggle'}
-
-"if &term ==# "xterm-256color" || has('gui_running')
-    "Plug 'itchyny/lightline.vim'
-"endif
-
-"lang specific
-Plug 'octol/vim-cpp-enhanced-highlight',{'for':'cpp'}
-Plug 'plasticboy/vim-markdown',{'for':'markdown'}
-Plug 'leafgarland/typescript-vim'
-Plug 'posva/vim-vue'
 
 Plug 'sillybun/vim-repl', {'do': './install.sh'}
 Plug 'mhinz/vim-startify'
