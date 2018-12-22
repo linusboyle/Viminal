@@ -1,5 +1,4 @@
 setlocal omnifunc=gtags#complete
-packadd YouCompleteMe
 
 let b:delimitMate_matchpairs = "(:),[:],{:}"
 
