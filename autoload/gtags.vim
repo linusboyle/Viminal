@@ -1,12 +1,29 @@
+" gtags.vim
+" Copyright (c) 2019 Linus Boyle <linusboyle@gmail.com>
+"
+" Permission is hereby granted, free of charge, to any person obtaining a copy
+" of this software and associated documentation files (the "Software"), to deal
+" in the Software without restriction, including without limitation the rights
+" to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+" copies of the Software, and to permit persons to whom the Software is
+" furnished to do so, subject to the following conditions:
+"
+" The above copyright notice and this permission notice shall be included in
+" all copies or substantial portions of the Software.
+"
+" THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+" IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+" FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+" AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+" LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+" OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+" SOFTWARE.
+
 if &compatible || !has('cscope') || exists('g:loaded_gtags')
     finish
 endif
 
 let g:loaded_gtags = 1
-
-if get(g:, 'gtags-using-cscope', 1)
-    set cscopeprg=gtags-cscope
-endif
 
 let s:project_root = ''
 
@@ -33,11 +50,11 @@ function! s:updatedb() abort
             if filereadable(fnameescape(l:root) . '.git/GTAGS')
                 call s:switchdb(fnameescape(l:root))
             else 
-                echo "GTAGS not available yet!"
+                echo "GTAGS not readable yet! Forget to generate it?"
                 return 0
             endif
         else
-            echo "not seems to be git repo :<"
+            echo "seems not to be a git repo :<"
             return 0
         endif
     endif
@@ -84,8 +101,11 @@ function! gtags#find(what, ...) abort
 	let text = "[cscope ".a:what.": ".text."]"
 	call setqflist([], ' ', {'nr':'$','title':text})
 
-    let tmp=&cscopequickfix
+    let tmpcsfix=&cscopequickfix
     set cscopequickfix=s+,c+,d+,i+,t+,e+,a+,g+,f+
+
+    let tmpprg=&cscopeprg
+    set cscopeprg=gtags-cscope
 
     try
 	    exec 'cs find '.a:what.' '.fnameescape(keyword)
@@ -94,7 +114,9 @@ function! gtags#find(what, ...) abort
         echo "sorry, not found :<"
     endtry
 
-    let &cscopequickfix=tmp
+    let &cscopequickfix=tmpcsfix
+    let &cscopeprg=tmpprg
+
 	redrawstatus
 endfunction
 
