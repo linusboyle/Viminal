@@ -21,7 +21,7 @@
 " OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 " SOFTWARE.
 
-" General Mapping----------------------{{{ 
+" Scripts--------------------{{{
 
 " grep operator
 nmap gs <plug>GrepOperatorNormal
@@ -38,27 +38,29 @@ nmap <leader><leader>i <plug>gtagsfind_i
 nmap <leader><leader>d <plug>gtagsfind_d
 nmap <leader><leader>a <plug>gtagsfind_a
 
-" syn group
+" syntax group
 nmap <leader>s <plug>(showSynGroup)
 
-inoremap <C-U> <C-G>u<C-U>
+"}}}
 
 "Fundamental Mapping---------------{{{
 
 nnoremap <Space> <PageDown>
 
+" use j/k on virtual lines
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+" and gj/gk for normal j/k
 nnoremap gk k
 nnoremap gj j
 
-" move between windows
+" window motions
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-h> <C-W>h
 noremap <C-l> <C-W>l
 
-" Go to home and end using capitalized directions
+" Go to home and end of line using H/L
 noremap H ^
 noremap L g_
 
@@ -79,7 +81,7 @@ vnoremap <leader>y "+y
 
 noremap <c-z> <NOP>
 noremap <c-s> <NOP>
-"no help,thx
+" no help,thx
 noremap <F1> <NOP>
 
 " }}}
@@ -126,8 +128,7 @@ noremap <leader>0 :tablast<cr>
 " }}}
 
 "InsertMode Mapping-----------------------{{{
+inoremap <C-U> <C-G>u<C-U>
 "inoremap <c-l> <right>
 "inoremap <c-h> <left>
-" }}}
-
 " }}}

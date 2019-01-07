@@ -30,4 +30,5 @@ endif
 let g:global_config_guard=1
 
 runtime keymap.vim
+runtime command.vim
 runtime thirdparty.vim
