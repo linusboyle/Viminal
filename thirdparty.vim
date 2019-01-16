@@ -2,18 +2,6 @@
 
 " Plugin Setting-------------------------{{{
 
-" NerdTree ------------------{{{
-augroup nerdtree_cli
-    autocmd!
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-
-noremap <F7> :NERDTreeToggle<CR>
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeDirArrows = 1
-
-"}}}
-
 "easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
