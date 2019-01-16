@@ -76,7 +76,6 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader><leader>q :q!<CR>
 nnoremap <leader>w :w<CR>
 
-" 复制选中区到系统剪切板中
 vnoremap <leader>y "+y
 
 noremap <c-z> <NOP>
@@ -129,6 +128,19 @@ noremap <leader>0 :tablast<cr>
 
 "InsertMode Mapping-----------------------{{{
 inoremap <C-U> <C-G>u<C-U>
-"inoremap <c-l> <right>
-"inoremap <c-h> <left>
+
+" Of course, this is just taken from official vim helpdoc
+function! s:CleverTab()
+    if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if pumvisible()
+            return "\<C-N>"
+        else
+            return "\<Tab>"
+        endif
+    endif
+endfunction
+
+inoremap <silent> <Tab> <C-R>=<sid>CleverTab()<CR>
 " }}}
