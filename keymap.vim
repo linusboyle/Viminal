@@ -106,8 +106,8 @@ nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 
-nnoremap <silent> <leader>/ :<C-U>nohlsearch<CR><C-L>
-vnoremap <silent> <leader>/ :<C-U>nohlsearch<CR>gv<C-L>
+"nnoremap <silent> <leader>/ :<C-U>nohlsearch<CR><C-L>
+"vnoremap <silent> <leader>/ :<C-U>nohlsearch<CR>gv<C-L>
 
 "}}}
 
