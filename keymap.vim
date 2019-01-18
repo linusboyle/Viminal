@@ -69,19 +69,20 @@ noremap L g_
 vnoremap < <gv
 vnoremap > >gv
 
-" y$ -> Y Make Y behave like other capitals
-nnoremap Y y$
-
 nnoremap <leader>q :q<CR>
-nnoremap <leader><leader>q :q!<CR>
 nnoremap <leader>w :w<CR>
+
+nnoremap <leader>e :e *<C-z><S-Tab>
+nnoremap <leader>f :find *<C-z><S-Tab>
 
 vnoremap <leader>y "+y
 
-noremap <c-z> <NOP>
-noremap <c-s> <NOP>
 " no help,thx
 noremap <F1> <NOP>
+noremap <C-z> <NOP>
+
+" netrw
+noremap <F5> :Vexplore<CR>
 
 " }}}
 
@@ -92,27 +93,16 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 "}}}
 
-"Search Utility-------------------------{{{
+"Search-------------------------{{{
 
 " Use sane regexes
 nnoremap / /\v
 vnoremap / /\v
 
-" Keep search pattern at the center of the screen.
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
-
-"nnoremap <silent> <leader>/ :<C-U>nohlsearch<CR><C-L>
-"vnoremap <silent> <leader>/ :<C-U>nohlsearch<CR>gv<C-L>
-
 "}}}
 
 "Tab/buffer Related------------------{{{
 
-" normal模式下切换到确切的tab
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
