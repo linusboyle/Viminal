@@ -54,6 +54,10 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap gk k
 nnoremap gj j
 
+" make it short to complete
+inoremap <c-p> <c-x><c-p>
+inoremap <c-n> <c-x><c-n>
+
 " window motions
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
