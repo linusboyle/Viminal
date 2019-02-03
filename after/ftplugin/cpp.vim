@@ -1,6 +1,7 @@
 setlocal omnifunc=gtags#complete
 setlocal path+=/usr/include
 setlocal path+=/usr/include/c++/8
+compiler g++
 
 let b:delimitMate_matchpairs = "(:),[:],{:}"
 
