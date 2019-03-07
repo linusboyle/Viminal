@@ -25,7 +25,7 @@ endif
 
 let g:loaded_grepOperator= 1
 
-let s:grep_command = "Grepper -tool ag -query "
+let s:grep_command = "Leaderf! rg -e "
 
 function! s:GrepOperator(type) abort
     let l:saved_unnamed_register = @@

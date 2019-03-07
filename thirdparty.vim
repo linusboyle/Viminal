@@ -2,6 +2,11 @@
 
 " Plugin Setting-------------------------{{{
 
+" cpp syntax
+let g:cpp_class_scope_highlight = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+
 "easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
@@ -36,7 +41,8 @@ let g:ycm_filetype_whitelist = {
             \ "c":1,
             \ "cpp":1,
             \ "sh":1,
-            \ "html":1
+            \ "html":1,
+            \ "javascript":1
             \ }
 
 "nnoremap <leader>s :YcmCompleter GetType<CR>
@@ -58,20 +64,12 @@ nnoremap <F6> :UndotreeToggle<cr>
 
 "Leaderf -------------------------------------{{{
 let g:Lf_ShortcutF = '<c-p>'
-"let g:Lf_ShortcutB = '<m-n>'
-noremap <c-n> :LeaderfMru<cr>
+let g:Lf_ShortcutB = '<Nop>'
 
-if(!has("gui_running"))
-    execute "set <M-p>=\ep"
-    execute "set <M-n>=\en"
-    execute "set <M-m>=\em"
-endif
+noremap - :Leaderf! buffer<cr>
 
-noremap <m-p> :LeaderfFunction!<cr>
-noremap <m-b> :LeaderfBuffer<cr>
-noremap <m-m> :LeaderfTag<cr>
-
-"let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+"let g:Lf_StlColorscheme = 'powerline'
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }
 
 let g:Lf_RootMarkers = ['.project', '.root', '.svn','.hg','.git']
@@ -80,9 +78,8 @@ let g:Lf_WindowHeight = 0.30
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
 let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
-let g:Lf_StlColorscheme = 'one'
 let g:Lf_PreviewResult = {'Function':0}
-let g:Lf_Ctags= '/usr/bin/ctags' 
+"let g:Lf_Ctags= '/usr/bin/ctags' 
 
 let g:Lf_NormalMap = {
     \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
@@ -96,8 +93,6 @@ let g:Lf_NormalMap = {
 
 "delimitmate
 let g:delimitMate_expand_cr = 1
-
-nmap gw <plug>(InteractiveWindow)
 
 "header
 let g:header_field_author = 'Linus Boyle'
@@ -140,4 +135,14 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_math = 1
 let g:tex_conceal = ""
+
+" asyncrun
+let g:asyncrun_open = 6
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+nnoremap <silent> <F9> :Make<CR>
+nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(6)<cr>
+
+"ultisnip
+let g:UltiSnipsExpandTrigger='`'
+let g:UltiSnipsListSnippets='<c-`>'
 "}}}

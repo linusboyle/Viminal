@@ -27,6 +27,8 @@
 nmap gs <plug>GrepOperatorNormal
 vmap gs <plug>GrepOperatorVisual
 
+nmap gw <plug>(InteractiveWindow)
+
 " gtags cscope find operations
 nmap <leader><leader>s <plug>gtagsfind_s
 nmap <leader><leader>g <plug>gtagsfind_g
@@ -45,18 +47,13 @@ nmap <leader>s <plug>(showSynGroup)
 
 "Fundamental Mapping---------------{{{
 
-nnoremap <Space> <PageDown>
-
 " use j/k on virtual lines
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
 " and gj/gk for normal j/k
 nnoremap gk k
 nnoremap gj j
-
-" make it short to complete
-inoremap <c-p> <c-x><c-p>
-inoremap <c-n> <c-x><c-n>
 
 " window motions
 noremap <C-j> <C-W>j
@@ -68,8 +65,7 @@ noremap <C-l> <C-W>l
 noremap H ^
 noremap L g_
 
-" => 选中及操作改键
-" 调整缩进后自动选中，方便再次操作
+" convinent indent operation 
 vnoremap < <gv
 vnoremap > >gv
 
@@ -88,6 +84,9 @@ noremap <C-z> <NOP>
 " netrw
 noremap <F5> :Vexplore<CR>
 
+" dictionary completion
+inoremap <c-k> <c-x><c-k>
+
 " }}}
 
 "Commandline Mapping--------------------{{{
@@ -99,13 +98,12 @@ cnoremap <C-e> <End>
 
 "Search-------------------------{{{
 
-" Use sane regexes
 nnoremap / /\v
 vnoremap / /\v
 
 "}}}
 
-"Tab/buffer Related------------------{{{
+"Tab/buffer-----------------{{{
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
