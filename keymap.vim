@@ -81,9 +81,6 @@ vnoremap <leader>y "+y
 noremap <F1> <NOP>
 noremap <C-z> <NOP>
 
-" netrw
-noremap <F5> :Vexplore<CR>
-
 " dictionary completion
 inoremap <c-k> <c-x><c-k>
 
