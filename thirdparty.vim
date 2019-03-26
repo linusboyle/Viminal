@@ -143,6 +143,6 @@ nnoremap <silent> <F9> :Make<CR>
 nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 "ultisnip
-let g:UltiSnipsExpandTrigger='`'
+let g:UltiSnipsExpandTrigger='<F2>'
 let g:UltiSnipsListSnippets='<c-`>'
 "}}}

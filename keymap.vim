@@ -92,6 +92,8 @@ inoremap <c-k> <c-x><c-k>
 "Commandline Mapping--------------------{{{
 cnoremap <C-j> <t_kd>
 cnoremap <C-k> <t_ku>
+cnoremap <C-h> <t_kl>
+cnoremap <C-l> <t_kr>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 "}}}
