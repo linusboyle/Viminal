@@ -27,7 +27,7 @@ if !has('autocmd') || v:version < 700
   finish
 endif
 
-let g:loaded_setfindhead= 1
+let g:loaded_setfindhead=1
 
 augroup filetype_grp
     autocmd!
