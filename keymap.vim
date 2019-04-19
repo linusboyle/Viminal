@@ -52,8 +52,8 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " and gj/gk for normal j/k
-nnoremap gk k
-nnoremap gj j
+noremap gk k
+noremap gj j
 
 " window motions
 noremap <C-j> <C-W>j
