@@ -31,14 +31,15 @@ nmap gw <plug>(InteractiveWindow)
 
 " gtags cscope find operations
 nmap <leader><leader>s <plug>gtagsfind_s
-nmap <leader><leader>g <plug>gtagsfind_g
-nmap <leader><leader>c <plug>gtagsfind_c
-nmap <leader><leader>t <plug>gtagsfind_t
-nmap <leader><leader>e <plug>gtagsfind_e
-nmap <leader><leader>f <plug>gtagsfind_f
-nmap <leader><leader>i <plug>gtagsfind_i
 nmap <leader><leader>d <plug>gtagsfind_d
-nmap <leader><leader>a <plug>gtagsfind_a
+nmap <leader><leader>r <plug>gtagsfind_r
+
+"nmap <leader><leader>t <plug>gtagsfind_t
+"nmap <leader><leader>i <plug>gtagsfind_i
+"nmap <leader><leader>e <plug>gtagsfind_e
+"nmap <leader><leader>f <plug>gtagsfind_f
+"nmap <leader><leader>a <plug>gtagsfind_a
+"nmap <leader><leader>g <plug>gtagsfind_g
 
 " syntax group
 nmap <leader>s <plug>(showSynGroup)
@@ -72,8 +73,8 @@ vnoremap > >gv
 nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
 
-nnoremap <leader>e :e *<C-z><S-Tab>
-nnoremap <leader>f :find *<C-z><S-Tab>
+"nnoremap <leader>e :e *<C-z><S-Tab>
+"nnoremap <leader>f :find *<C-z><S-Tab>
 
 vnoremap <leader>y "+y
 

@@ -63,23 +63,27 @@ let g:undotree_TreeNodeShape = '・'
 nnoremap <F6> :UndotreeToggle<cr>
 
 "Leaderf -------------------------------------{{{
-let g:Lf_ShortcutF = '<c-p>'
+"let g:Lf_StlSeparator = { 'left': '', 'right': '' }
+"let g:Lf_StlColorscheme = 'powerline'
+
+let g:Lf_ShortcutF = '<leader>f'
 let g:Lf_ShortcutB = '<Nop>'
 
-noremap - :Leaderf! buffer<cr>
-
-let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
-"let g:Lf_StlColorscheme = 'powerline'
-let g:Lf_StlSeparator = { 'left': '', 'right': '' }
-
+let g:Lf_DefaultMode='FullPath'
+let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font':''}
 let g:Lf_RootMarkers = ['.project', '.root', '.svn','.hg','.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
-let g:Lf_WindowHeight = 0.30
+let g:Lf_WindowHeight = 0.25
 let g:Lf_CacheDirectory = expand('~/.vim/cache')
 let g:Lf_ShowRelativePath = 0
 let g:Lf_HideHelp = 1
 let g:Lf_PreviewResult = {'Function':0}
-"let g:Lf_Ctags= '/usr/bin/ctags' 
+
+let g:Lf_GtagsAutoGenerate = 1
+let g:Lf_GtagsSource = 2
+let g:Lf_GtagsSkipUnreadable = 1
+let g:Lf_GtagsSkipSymlink = 'a'
+let g:Lf_Gtagslabel='native-pygments'
 
 let g:Lf_NormalMap = {
     \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
@@ -89,13 +93,14 @@ let g:Lf_NormalMap = {
     \ "Function":    [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
     \ "Colorscheme":    [["<ESC>", ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
     \ }
+nnoremap - :Leaderf! buffer<cr>
 "}}}
 
 "delimitmate
 let g:delimitMate_expand_cr = 1
 
 "header
-let g:header_field_author = 'Linus Boyle'
+let g:header_field_author = 'Zhilei Han'
 let g:header_field_author_email = 'linusboyle@gmail.com'
 let g:header_auto_add_header = 0
 

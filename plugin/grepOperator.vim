@@ -25,11 +25,11 @@ endif
 
 let g:loaded_grepOperator= 1
 
-let s:grep_command = "Leaderf! rg -e "
+let s:grep_command = "Leaderf rg -e "
 
 function! s:GrepOperator(type) abort
     let l:saved_unnamed_register = @@
-    let l:project_root = findRoot#Find_project_root()
+    "let l:project_root = findRoot#Find_project_root()
 
     if a:type ==# 'v'
         normal! `<v`>y
@@ -40,16 +40,14 @@ function! s:GrepOperator(type) abort
         return
     endif
 
-    if empty(l:project_root)
-        "search in current dir
-        silent! execute s:grep_command . shellescape(@@) . " ."
-    else
-        "search in root dir
-        silent! execute s:grep_command . shellescape(@@) . " " . l:project_root
-    endif
+    "if empty(l:project_root)
+         silent! execute s:grep_command . shellescape(@@) . " ."
+    "else
+        "silent! execute s:grep_command . shellescape(@@) . " " . l:project_root
+    "endif
 
     let @@ = saved_unnamed_register
 endfunction
 
-nnoremap <plug>GrepOperatorNormal :<c-u>set operatorfunc=<SID>GrepOperator<cr>g@
-vnoremap <plug>GrepOperatorVisual :<c-u>call <SID>GrepOperator(visualmode())<cr>
+nnoremap <silent> <plug>GrepOperatorNormal :<c-u>set operatorfunc=<SID>GrepOperator<cr>g@
+vnoremap <silent>  <plug>GrepOperatorVisual :<c-u>call <SID>GrepOperator(visualmode())<cr>
