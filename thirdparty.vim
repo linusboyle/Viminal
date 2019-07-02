@@ -11,8 +11,9 @@ let g:cpp_experimental_simple_template_highlight = 1
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f2)
-noremap <leader><leader>w <Plug>(easymotion-w)
-noremap <leader><leader>b <Plug>(easymotion-b)
+
+" coq
+let g:coqtail_nomap = 1
 
 "YCM-------------------------------{{{
 let g:ycm_server_python_interpreter='/usr/bin/python'
@@ -42,7 +43,8 @@ let g:ycm_filetype_whitelist = {
             \ "cpp":1,
             \ "sh":1,
             \ "html":1,
-            \ "javascript":1
+            \ "javascript":1,
+            \ "python":1
             \ }
 
 "nnoremap <leader>s :YcmCompleter GetType<CR>
