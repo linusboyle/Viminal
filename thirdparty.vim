@@ -14,6 +14,10 @@ nmap s <Plug>(easymotion-overwin-f2)
 
 " coq
 let g:coqtail_nomap = 1
+function! g:CoqtailHighlight()
+    hi def CoqtailChecked ctermbg=17 guibg=DarkCyan
+    hi def CoqtailSent ctermbg=60 guibg=Cyan
+endfunction
 
 "YCM-------------------------------{{{
 let g:ycm_server_python_interpreter='/usr/bin/python'
@@ -119,11 +123,13 @@ let g:repl_program = {
             \	"default": "bash",
             \   "javascript": "node",
             \   "cpp": "cling",
+            \   "ocaml": "ocaml",
             \	}
 let g:repl_input_symbols = {
             \   'python': ['>>>', '>>>>', 'ipdb>', 'pdb', '...'],
             \   'javascript': ['>', '...'],
             \   'cpp':['[cling]$','[cling]$ ?'],
+            \   'ocaml':['#'],
             \   }
 let g:repl_exit_commands = {
             \	"python": "quit()",
@@ -131,6 +137,7 @@ let g:repl_exit_commands = {
             \   "cling":".q",
             \	"bash": "exit",
             \	"zsh": "exit",
+            \	"ocaml": "#quit;;",
             \	"default": "exit",
             \	}
 
