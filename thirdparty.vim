@@ -113,34 +113,6 @@ let g:header_auto_add_header = 0
 "echodoc
 let g:echodoc#enable_at_startup = 1
 
-"repl
-nnoremap <leader>r :REPLToggle<Cr>
-let g:sendtorepl_invoke_key = "<leader>o" 
-let g:repl_position = 3
-let g:repl_width = 50
-let g:repl_program = {
-            \	"python": "python3",
-            \	"default": "bash",
-            \   "javascript": "node",
-            \   "cpp": "cling",
-            \   "ocaml": "ocaml",
-            \	}
-let g:repl_input_symbols = {
-            \   'python': ['>>>', '>>>>', 'ipdb>', 'pdb', '...'],
-            \   'javascript': ['>', '...'],
-            \   'cpp':['[cling]$','[cling]$ ?'],
-            \   'ocaml':['#'],
-            \   }
-let g:repl_exit_commands = {
-            \	"python": "quit()",
-            \   "node":'.exit',
-            \   "cling":".q",
-            \	"bash": "exit",
-            \	"zsh": "exit",
-            \	"ocaml": "#quit;;",
-            \	"default": "exit",
-            \	}
-
 " quick-scope
 let g:qs_max_chars=80
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
