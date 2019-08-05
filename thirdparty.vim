@@ -110,9 +110,6 @@ let g:header_field_author = 'Zhilei Han'
 let g:header_field_author_email = 'linusboyle@gmail.com'
 let g:header_auto_add_header = 0
 
-"echodoc
-let g:echodoc#enable_at_startup = 1
-
 " quick-scope
 let g:qs_max_chars=80
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
