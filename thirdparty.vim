@@ -122,10 +122,11 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_math = 1
 let g:tex_conceal = ""
 
-" asyncrun
+" asyncrun/neomake
 let g:asyncrun_open = 6
+let g:neomake_open_list = 2
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
-nnoremap <silent> <F9> :Make<CR>
+nnoremap <silent> <F9> :Neomake<CR>
 nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 "ultisnip
