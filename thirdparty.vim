@@ -20,7 +20,7 @@ function! g:CoqtailHighlight()
 endfunction
 
 "YCM-------------------------------{{{
-let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_server_python_interpreter='/usr/bin/python3'
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 " 触发补全快捷键 
@@ -33,9 +33,10 @@ let g:ycm_server_log_level = 'info'
 let g:ycm_complete_in_strings = 1
 let g:ycm_cache_omnifunc = 0
 let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_seed_identifiers_with_syntax = 1
 
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_always_populate_location_list = 1
+let g:ycm_always_populate_location_list = 0
 let g:ycm_enable_diagnostic_signs = 0
 
 let g:ycm_error_symbol = '×'
@@ -47,6 +48,7 @@ let g:ycm_filetype_whitelist = {
             \ "cpp":1,
             \ "sh":1,
             \ "html":1,
+            \ "java":1,
             \ "javascript":1,
             \ "python":1
             \ }
@@ -56,7 +58,7 @@ let g:ycm_filetype_whitelist = {
 "nnoremap <leader>f :YcmCompleter FixIt<CR>
 
 let g:ycm_semantic_triggers =  {
-            \ 'c,cpp': ['re!\w{2}'],
+            \ 'c,cpp,java': ['re!\w{2}', '.'],
             \ 'html': ['re!\w{2}','</'],
             \ }
 "}}}
@@ -126,7 +128,13 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 nnoremap <silent> <F9> :Neomake<CR>
 nnoremap <silent> <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
+let g:neomake_error_sign = {
+\ 'text': '✖',
+\ 'texthl': 'SpellBad',
+\ }
+
 "ultisnip
 let g:UltiSnipsExpandTrigger='<F2>'
 let g:UltiSnipsListSnippets='<c-`>'
+
 "}}}
