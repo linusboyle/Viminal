@@ -56,13 +56,15 @@ function! s:Wildignore() abort
 
   " Documents
   let l:ignores += [
-        \ '*.docx'
-        \,'*.djvu'
+        \'*.djvu'
         \,'*.odp'
         \,'*.ods'
         \,'*.odt'
         \,'*.pdf'
+        \,'*.doc'
+        \,'*.docx'
         \,'*.ppt'
+        \,'*.pptx'
         \,'*.xls'
         \,'*.xlsx'
         \ ]
@@ -162,6 +164,13 @@ function! s:Wildignore() abort
   let l:ignores += [
         \ '*~'
         \,'*.swp'
+        \ ]
+
+  " ocaml/coq
+  let l:ignores += [
+        \ '*.vo'
+        \,'*.cmi'
+        \,'*.cmo'
         \ ]
 
   " If on a system where case matters for filenames, for any that had
