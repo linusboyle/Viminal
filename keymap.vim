@@ -66,7 +66,7 @@ noremap <C-l> <C-W>l
 noremap H ^
 noremap L g_
 
-" convinent indent operation 
+" convenient indent operation 
 vnoremap < <gv
 vnoremap > >gv
 
@@ -78,7 +78,7 @@ nnoremap <leader>w :w<CR>
 
 vnoremap <leader>y "+y
 
-" no help,thx
+" no help, thx
 noremap <F1> <NOP>
 noremap <C-z> <NOP>
 
@@ -115,6 +115,9 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
+noremap [t :tabprevious<cr>
+noremap ]t :tabnext<cr>
 
 " }}}
 
