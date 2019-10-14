@@ -22,4 +22,5 @@
 " it's stupid...but useful
 iabbrev mian main
 iabbrev ture true
-iabbrev @@ linusboyle@gmail.com
+iabbrev fasle false
+iabbrev @@ hzl17@mails.tsinghua.edu.cn
