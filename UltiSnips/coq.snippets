@@ -1,0 +1,31 @@
+snippet require "Require Import ..."
+Require Import ${1:library}.
+endsnippet
+
+snippet def "Definition"
+Definition ${1:name} :=
+	$2
+.
+endsnippet
+
+snippet fix "Fixpoint"
+Fixpoint ${1:name} :=
+	$2
+.
+endsnippet
+
+snippet case "Match pattern"
+| ${1:pattern} => ${2:act} 
+endsnippet
+
+snippet match "Match"
+match ${1:cond} with
+| ${2:pattern} => ${3:act} 
+end
+endsnippet
+
+snippet rec "Record"
+Record ${1:name} : Type := mk$1 {
+
+}.
+endsnippet
