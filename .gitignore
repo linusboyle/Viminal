@@ -1,3 +1,5 @@
 cache/
 .netrwhist
 *.pyc
+plugged/
+seafile-ignore.txt

@@ -137,4 +137,7 @@ let g:neomake_error_sign = {
 let g:UltiSnipsExpandTrigger='<F2>'
 let g:UltiSnipsListSnippets='<c-`>'
 
+"echodoc
+let g:echodoc#enable_at_startup = 1
+
 "}}}

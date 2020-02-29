@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-#Author: Linus Boyle <linusboyle@gmail.com> 
+#Author: Zhilei Han <hzl17@mails.tsinghua.edu.cn> 

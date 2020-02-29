@@ -1,4 +1,3 @@
-setlocal omnifunc=gtags#complete
 setlocal path+=/usr/include
 setlocal path+=/usr/include/c++/8 " standard library path
 compiler g++

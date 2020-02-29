@@ -9,3 +9,6 @@ onoremap <silent> ai :<c-u>call textobj#aroundIndentation()<cr>
 
 xnoremap <silent> ii :<c-u>call textobj#inIndentation()<cr>
 onoremap <silent> ii :<c-u>call textobj#inIndentation()<cr>
+
+xnoremap <silent> id :<c-u> normal! G$Vgg0<cr>
+onoremap <silent> id :<c-u> normal! GVgg<cr>

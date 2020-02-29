@@ -37,8 +37,44 @@ execute "set rtp+=" . g:opamshare . "/merlin/vim"
 iabbrev mian main
 iabbrev ture true
 iabbrev fasle false
+iabbrev tihs this
 iabbrev @@ hzl17@mails.tsinghua.edu.cn
 
+" Load third-party plugins
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'morhetz/gruvbox'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'jacoborus/tender.vim'
+Plug 'crusoexia/vim-monokai'
+Plug 'alpertuna/vim-header'
+Plug 'unblevable/quick-scope'
+Plug 'posva/vim-vue'
+Plug 'leafgarland/typescript-vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'octol/vim-cpp-enhanced-highlight', {'for' : 'cpp'}
+Plug 'tpope/vim-fugitive'
+Plug 'Raimondi/delimitMate'
+Plug 'Yggdroot/LeaderF'
+Plug 'scrooloose/nerdcommenter'
+Plug 'godlygeek/tabular'
+Plug 'mbbill/undotree'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'mhinz/vim-grepper'
+Plug 'kshenoy/vim-signature'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'sirver/ultisnips'
+Plug 'whonore/Coqtail'
+Plug 'neomake/neomake'
+Plug 'wellle/targets.vim'
+
+call plug#end()
+
+" other configurations:
 runtime tweaks.vim
 runtime keymap.vim
 runtime command.vim
